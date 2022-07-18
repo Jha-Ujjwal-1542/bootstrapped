@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,7 +11,7 @@ class HomePage extends StatelessWidget {
         title: Text('Home page'),
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           child: Text('Open route'),
           onPressed: () {
             Navigator.pushReplacementNamed(context, "/setting");
