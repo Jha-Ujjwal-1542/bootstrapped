@@ -144,19 +144,23 @@ class HomePage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const Matched()));
-                              },
-                              child: const Text(
-                                'ACCEPT',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  letterSpacing: 2.2,
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const Matched()));
+                                },
+                                child: const Text(
+                                  'ACCEPT',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    letterSpacing: 2.2,
+                                  ),
                                 ),
                               ),
                             )

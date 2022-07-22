@@ -49,12 +49,12 @@ class startup_profile_page extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
             Text(
-              'Manjil Sthapit',
+              'Bijay Khadka',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 16),
             Text(
-              'CEO, Ace Solutions',
+              'COO, Apex Solutions',
               style: TextStyle(fontSize: 18, height: 1.4),
             ),
             SizedBox(height: 16),

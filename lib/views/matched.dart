@@ -19,12 +19,12 @@ class ContentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Material(
-      color: Colors.white,
+      color: Colors.blue,
       child: Center(
         child: Text(
-          'Congratulations!! Its a Match ',
+          'Congratulations!!\nClock B Tower and Bijay Khadka\nare\nBootstrapped',
           style: TextStyle(
-              color: Colors.blue, fontSize: 40.0, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: 40.0, fontWeight: FontWeight.bold),
         ),
       ),
     );

@@ -67,7 +67,7 @@ class investor_profile extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Text(
-              'Once a hardcore programmer, then a social media junkie, now a self-taught systems designer and developer whose daily chores involves studying business processes to automate them and studying business problems to solve them through simple modular systems.',
+              'Antarprerana is a private company, established in the year 2015, which supports entrepreneurs in Nepal through investments and mentorships.',
               style: TextStyle(fontSize: 18, height: 1.7),
             ),
             SizedBox(height: 16),
