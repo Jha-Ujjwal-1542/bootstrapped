@@ -1,111 +1,128 @@
+import 'package:bootstrapped/views/loginreg/login_page.dart';
+import 'package:bootstrapped/views/profiles/user_profile.dart';
+import 'package:bootstrapped/views/settings_page.dart';
 import 'package:flutter/material.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({Key? key}) : super(key: key);
 
+  final padding = const EdgeInsets.symmetric(horizontal: 20.0);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: Colors.blue,
-        child: Stack(
+    return Drawer(
+      child: Material(
+        color: const Color.fromRGBO(50, 75, 205, 1),
+        child: ListView(
           children: <Widget>[
-            Image(
-              image: const AssetImage('assets/images/menu_background.jpg'),
-              fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+            buildHeader(
+                urlImage:
+                    "https://media-exp1.licdn.com/dms/image/C5603AQGu8VXUgQ-2yA/profile-displayphoto-shrink_200_200/0/1592378436724?e=2147483647&v=beta&t=ZHnGaj1cH_uLGScI8W0tr67ibi0x5JGCSaB6Fo33xY8",
+                name: "Ujjwal Jha",
+                designation: "Student"),
+            const SizedBox(
+              height: 48,
             ),
-            ListView(
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 30,
+            Container(
+              padding: padding,
+              child: Column(
+                children: [
+                  buildMenuItem(
+                    text: 'Profile',
+                    icon: Icons.people,
+                    onClicked: () => selectedItem(context, 0),
                   ),
-                  child: Row(
-                    children: <Widget>[
-                      const CircleAvatar(
-                        radius: 40,
-                        backgroundImage:
-                            AssetImage('assets/images/people/woman1.jpg'),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const <Widget>[
-                            Text(
-                              "Jacek Kawiak",
-                              style: TextStyle(
-                                fontSize: 21,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Text(
-                              "linkujjwal@gmail.com",
-                              style: TextStyle(
-                                height: 2,
-                                fontSize: 15,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  buildMenuItem(
+                    text: 'Settings',
+                    icon: Icons.settings,
+                    onClicked: () => selectedItem(context, 1),
                   ),
-                ),
-                ListView(
-                  padding: const EdgeInsets.all(8),
-                  scrollDirection: Axis.vertical,
-                  children: const <Widget>[
-                    MenuTile("Dashboard", Icons.dashboard),
-                    MenuTile("Profile settings", Icons.settings),
-                    MenuTile("Chats", Icons.chat_bubble),
-                    MenuTile("Profile", Icons.zoom_in),
-                    MenuTile("Logout", Icons.exit_to_app_outlined),
-                    MenuTile("Matches", Icons.handshake),
-                  ],
-                ),
-              ],
-            )
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  const Divider(
+                    color: Colors.white,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  buildMenuItem(
+                    text: 'Log Out',
+                    icon: Icons.logout_outlined,
+                    onClicked: () => selectedItem(context, 2),
+                  ),
+                ],
+              ),
+            ),
           ],
-        ));
-  }
-}
-
-class MenuTile extends StatelessWidget {
-  final String title;
-  final IconData icon;
-
-  // ignore: use_key_in_widget_constructors
-  const MenuTile(
-    this.title,
-    this.icon,
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 3,
-        ),
-        leading: Icon(
-          icon,
-          color: Colors.white,
-        ),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w300,
-            color: Colors.white,
-          ),
         ),
       ),
     );
   }
+
+  Widget buildMenuItem({
+    required String text,
+    required IconData icon,
+    VoidCallback? onClicked,
+  }) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        color: Colors.white,
+      ),
+      title: Text(text, style: const TextStyle(color: Colors.white)),
+      onTap: onClicked,
+    );
+  }
+
+  void selectedItem(BuildContext context, int index) {
+    Navigator.of(context).pop();
+
+    switch (index) {
+      case 0:
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const user_profile()));
+        break;
+      case 1:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const SettingPage()));
+        break;
+      case 2:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const LoginPage()));
+        break;
+      default:
+    }
+  }
+
+  Widget buildHeader({
+    required String urlImage,
+    required String name,
+    required String designation,
+  }) =>
+      InkWell(
+        child: Container(
+          padding: padding.add(const EdgeInsets.symmetric(vertical: 40)),
+          child: Row(
+            children: [
+              CircleAvatar(radius: 30, backgroundImage: NetworkImage(urlImage)),
+              const SizedBox(width: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    designation,
+                    style: const TextStyle(fontSize: 14, color: Colors.white),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
 }

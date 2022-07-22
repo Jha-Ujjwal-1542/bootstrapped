@@ -1,17 +1,18 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:bootstrapped/constants.dart';
+import 'package:bootstrapped/views/loginreg/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+// ignore: camel_case_types
+class StartupRegister extends StatelessWidget {
+  const StartupRegister({Key? key}) : super(key: key);
 
   Widget _buildNameTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Email',
+          'Name',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -29,10 +30,10 @@ class RegisterPage extends StatelessWidget {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.email,
+                Icons.person,
                 color: Colors.white,
               ),
-              hintText: 'Full Name',
+              hintText: 'Enter your full name',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -41,7 +42,41 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildAboutTF() {
+  Widget _buildEmailTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Email',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.mail,
+                color: Colors.white,
+              ),
+              hintText: 'Enter your email ID',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -64,10 +99,10 @@ class RegisterPage extends StatelessWidget {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.lock,
+                Icons.pin_outlined,
                 color: Colors.white,
               ),
-              hintText: 'About',
+              hintText: 'Enter your password',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -76,12 +111,12 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildMinInvTF() {
+  Widget _buildMobileTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Password',
+          'Mobile Numnber',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -90,76 +125,6 @@ class RegisterPage extends StatelessWidget {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            decoration: InputDecoration(labelText: 'Enter Minimum Investment'),
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildMaxInvTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Password',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            decoration: InputDecoration(labelText: 'Enter Maximum Investment'),
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildInterestTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Password',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            decoration: InputDecoration(labelText: 'Enter Interest'),
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildLocationTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Password',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            obscureText: true,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'OpenSans',
@@ -168,10 +133,10 @@ class RegisterPage extends StatelessWidget {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.lock,
+                Icons.call,
                 color: Colors.white,
               ),
-              hintText: 'Location',
+              hintText: 'Enter your mobile number',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -180,12 +145,12 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildStageTF() {
+  Widget _buildCountryCodeTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Password',
+          'Country Code',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -194,7 +159,6 @@ class RegisterPage extends StatelessWidget {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            obscureText: true,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'OpenSans',
@@ -203,10 +167,10 @@ class RegisterPage extends StatelessWidget {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.lock,
+                Icons.map,
                 color: Colors.white,
               ),
-              hintText: 'Stage',
+              hintText: 'Enter your country code',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -215,12 +179,12 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildIndustryTF() {
+  Widget _buildTypeTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Password',
+          'User Type',
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -229,7 +193,6 @@ class RegisterPage extends StatelessWidget {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            obscureText: true,
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'OpenSans',
@@ -238,10 +201,10 @@ class RegisterPage extends StatelessWidget {
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
-                Icons.lock,
+                Icons.type_specimen,
                 color: Colors.white,
               ),
-              hintText: 'Industry',
+              hintText: 'Enter your user-type',
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -250,24 +213,71 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _buildRegisterBtn() {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-      alignment: Alignment.center,
-      //height: 140.0,
-      child: ElevatedButton(
-        onPressed: () => {Text('Login Button Pressed')},
-        style: ElevatedButton.styleFrom(primary: Colors.white),
-        child: const Text(
-          'LOGIN',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Georgia',
+  Widget _buildCreatedAtTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Created Date',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.date_range,
+                color: Colors.white,
+              ),
+              hintText: 'Enter the date of creation',
+              hintStyle: kHintTextStyle,
+            ),
           ),
         ),
-      ),
+      ],
+    );
+  }
+
+  Widget _buildAddressTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Address',
+          style: kLabelStyle,
+        ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: kBoxDecorationStyle,
+          height: 60.0,
+          child: TextField(
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.location_on,
+                color: Colors.white,
+              ),
+              hintText: 'Enter your Address',
+              hintStyle: kHintTextStyle,
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -279,19 +289,7 @@ class RegisterPage extends StatelessWidget {
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: const [
-                  Color.fromARGB(221, 48, 137, 253),
-                  Color.fromARGB(221, 25, 97, 231),
-                  Color.fromARGB(221, 17, 128, 255),
-                  Color.fromARGB(221, 8, 98, 255),
-                ],
-                stops: const [0.1, 0.4, 0.7, 0.9],
-              ),
-            ),
+            color: Colors.lightBlue,
           ),
           SizedBox(
             height: double.infinity,
@@ -312,6 +310,9 @@ class RegisterPage extends StatelessWidget {
                         fontSize: 50.0,
                         fontWeight: FontWeight.bold),
                   ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
                   Text(
                     'Register',
                     style: TextStyle(
@@ -321,23 +322,65 @@ class RegisterPage extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 30.0),
+                  _buildNameTF(),
                   SizedBox(
                     height: 30.0,
                   ),
-                  ListView(
-                    padding: const EdgeInsets.all(8),
-                    scrollDirection: Axis.vertical,
-                    children: <Widget>[
-                      _buildNameTF(),
-                      _buildAboutTF(),
-                      _buildMinInvTF(),
-                      _buildMaxInvTF(),
-                      _buildIndustryTF(),
-                      _buildInterestTF(),
-                      _buildLocationTF(),
-                      _buildStageTF(),
-                      _buildRegisterBtn(),
-                    ],
+                  _buildMobileTF(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  _buildAddressTF(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  _buildCountryCodeTF(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  _buildEmailTF(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  _buildPasswordTF(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  _buildTypeTF(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  _buildCreatedAtTF(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    alignment: Alignment.center,
+                    //height: 140.0,
+                    child: ElevatedButton(
+                      onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()))
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                      ),
+                      child: const Text(
+                        'REGISTER',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 35.0,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Georgia',
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30.0,
                   ),
                 ],
               ),

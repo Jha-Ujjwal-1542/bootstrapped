@@ -40,6 +40,8 @@ dependencies:
   google_fonts: ^3.0.1
   numeric_keyboard: ^1.1.0
   font_awesome_flutter: ^10.1.0
+  video_player: ^2.4.5
+  provider: ^6.0.3
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +66,7 @@ flutter:
   assets:
     - assets/logos/Facebook.png
     - assets/logos/Google.png
+    - assets/logos/MainLogo.png
 
   fonts:
     - family: OpenSans

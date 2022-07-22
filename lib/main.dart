@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bootstrapped',
       onGenerateRoute: route.controller,
-      initialRoute: route.loginpage,
+      initialRoute: route.registerpage,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
